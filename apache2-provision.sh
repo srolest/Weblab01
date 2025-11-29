@@ -5,17 +5,22 @@
 # - apolo.olimpo.test.conf
 # - atenea.olimpo.test.conf
 #
+# Copiar apache2.conf
+cp -v /vagrant/files/apache-config/apache2.conf /etc/apache2/apache2.conf
 
-# tu código aquí
+# Copiar VirtualHosts
+cp -v /vagrant/files/apache-config/apolo.olimpo.test.conf /etc/apache2/sites-available/
+cp -v /vagrant/files/apache-config/atenea.olimpo.test.conf /etc/apache2/sites-available/
 
 #
 # Habilitar los servidores virtuales
 #
 
-# tu código aquí
+a2ensite apolo.olimpo.test.conf
+a2ensite atenea.olimpo.test.conf
 
 #
 # Reiniciar el servicio
 #
 
-# tu código aquí
+systemctl reload apache2
