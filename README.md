@@ -1,35 +1,46 @@
-# Laboratorio web 1: Sitios virtuales
+# WebLab 01 — Virtual Hosts con Apache y DNS
 
-## Utilización
+## 1. Summary
+This practice configures two virtual machines using **Vagrant**:
 
-Ejecutaremos:
+- `ns1.olimpo.test` (192.168.57.10): DNS server for `olimpo.test`.
+- `mercurio.olimpo.test` (192.168.57.11): Apache web server with virtual hosts:
+  - `apolo.olimpo.test`
+  - `atenea.olimpo.test`
 
-   vagrant up
+---
 
-Tendremos dos máquinas virtuales:
+## 2. Set up the lab
+```bash
+vagrant up
+vagrant ssh dns    
+vagrant ssh web
+```    
 
-- `dns`
+---
 
-- `web`
+## Contents
 
-## Contenido
+Contains the following files:
 
-Contiene los siguientes archivos:
+- `README.md`, this file
 
-- `README.md`, este fichero
+- `Vagrantfile`, Vagrant project
 
-- `Vagrantfile`, proyecto de Vagrant
+- `apache2-provision.sh` with web server provisioning
 
-- `apache2-provision.sh` con la provisión del servidor web
+- `dns-provision.sh` with DNS server provisioning
 
-- `dns-provision.sh` con la provisión del servidor DNS
+Contains the following subdirectories:
 
-Contiene los subdirectorios:
+- `files/apolo.olimpo.test` root of web documents for that site.
 
-- `files/apolo.olimpo.test` raíz de documentos web de dicho sitio.
+- `files/atenea.olimpo.test` root of web documents for that site.
 
-- `files/atenea.olimpo.test` raíz de documentos web de dicho sitio.
+- `files/mercurio.olimpo.test` web server configuration
 
-- `files/mercurio.olimpo.test` configuración servidor web
+- `files/ns1.olimpo.test` DNS server configuration
 
-- `files/ns1.olimpo.test` configuración servidor DNS
+- `files/apache-config` configuration files that we put in the provision
+
+---
