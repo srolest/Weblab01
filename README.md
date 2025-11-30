@@ -1,6 +1,6 @@
 # WebLab 01 — Virtual Hosts con Apache y DNS
 
-## 1. Summary
+## Summary
 This practice configures two virtual machines using **Vagrant**:
 
 - `ns1.olimpo.test` (192.168.57.10): DNS server for `olimpo.test`.
@@ -10,7 +10,7 @@ This practice configures two virtual machines using **Vagrant**:
 
 ---
 
-## 2. Set up the lab
+## Set up the lab
 ```bash
 vagrant up
 vagrant ssh dns    
@@ -49,7 +49,8 @@ Contains the following subdirectories:
 First, we check everything related to the DNS.
 
 1. We check the DNSsec and forwarders in the `named.conf.options` file. We also check the named.conf.local file to see the zones and their location.
-[DIG_DIRECT_ZONE](./images/dnssec.png) | [DIG_DIRECT_ZONE](./images/named.conf.local.png)
+
+[NAMED.CONF.OPTIONS](./images/dnssec.png) | [NAMED.CONF.LOCAL](./images/named.conf.local.png)
 
 2. Then we check the forward zone where we will add the alias and then the reverse zone.
 
@@ -57,28 +58,48 @@ Direct zone:
 ```bash
 cat /var/lib/bind/olimpo.test.dns
 ```  
-[DIG_DIRECT_ZONE](./images/direct-zone.png)
+[DIRECT-ZONE](./images/direct-zone.png)
 
 Reverse zone:
 ```bash
 cat /var/lib/bind/192.168.57.dns
 ```  
-[DIG_DIRECT_ZONE](./images/reverse-zone.png)
+[REVERSE-ZONE](./images/reverse-zone.png)
 
 3. Configure Apache server 
+
 We will install it using the provision we have in the vagrant file (mercurio.vm.provision “shell”, name: “apache2”,
                           inline: “apt-get install -y apache2”)
 and configure it using the `apache2-provision.sh` file.
 
 4. Virtual Hosts
+
 We want to create and enable web servers for the domains apolo.olimpo.test and
 atenea.olimpo.test hosted on the machine mercurio.olimpo.test.
 To do this, we configure two files:
 
 - `apolo.olimpo.test.conf`
-[DIG_DIRECT_ZONE](./images/apolo.olimpo.test.png)
+[APOLO.OLIMPO.TEST.CONF](./images/apolo.olimpo.test.png)
 
 - `atenea.olimpo.test.conf`
-[DIG_DIRECT_ZONE](./images/atenea.olimpo.test.png)
+[ATENEA.OLIMPO.TEST.CONF](./images/atenea.olimpo.test.png)
 
 ---
+
+5. Checks with curl command
+
+We use the curl command to check the following websites:
+- `http://apolo.olimpo.test/` 
+- `http://apolo.olimpo.test/apolo.html`
+- `http://apolo.olimpo.test/index.html`
+- `http://apolo.olimpo.test/messages/404.html`
+ 
+ [APOLO-CURL-RESULT](./images/curl-result.png)
+
+  Then we use the curl command to check the following websites:
+- `http://atenea.olimpo.test/atenea.html`
+- `http://atenea.olimpo.test/`
+- `http://atenea.olimpo.test/index.html`
+- `http://atenea.olimpo.test/messages`
+ 
+ [ATENEA-CURL-RESULT](./images/curl-result2.png)
