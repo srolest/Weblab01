@@ -44,3 +44,28 @@ Contains the following subdirectories:
 - `files/apache-config` configuration files that we put in the provision
 
 ---
+
+## Steps to follow
+First, we check everything related to the DNS.
+
+1. We check the DNSsec and forwarders in the `named.conf.options` file.
+[DIG_DIRECT_ZONE](./images/dnssec.png)
+
+2. Then we check the forward zone where we will add the alias and then the reverse zone.
+
+Direct zone:
+```bash
+cat /var/lib/bind/olimpo.test.dns
+```  
+[DIG_DIRECT_ZONE](./images/direct-zone.png)
+
+Reverse zone:
+```bash
+cat /var/lib/bind/192.168.57.dns
+```  
+[DIG_DIRECT_ZONE](./images/reverse-zone.png)
+
+3. Configure Apache server 
+We will install it using the provision we have in the vagrant file (mercurio.vm.provision “shell”, name: “apache2”,
+                          inline: “apt-get install -y apache2”)
+and configure it using the `apache2-provision.sh` file.
