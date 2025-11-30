@@ -103,3 +103,10 @@ We use the curl command to check the following websites:
 - `http://atenea.olimpo.test/messages`
  
  [ATENEA-CURL-RESULT](./images/curl-result2.png)
+
+6. Checks with hurl.
+
+Hurl is a tool for executing and testing HTTP requests.
+I have also used the hurl file to make checks. Below is a screenshot of the result:
+
+[HURL-RESULT](./images/hurl-check.png)
