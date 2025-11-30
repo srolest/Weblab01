@@ -107,6 +107,9 @@ We use the curl command to check the following websites:
 6. Checks with hurl.
 
 Hurl is a tool for executing and testing HTTP requests.
-I have also used the hurl file to make checks. Below is a screenshot of the result:
+
+I have also used the hurl file to make checks.
+I had to create the soyuz.html file because the HURL file requires it. Although the PDF does not request it, the test does require checking it.
+Below is a screenshot of the result:
 
 [HURL-RESULT](./images/hurl-check.png)
