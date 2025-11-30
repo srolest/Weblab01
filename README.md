@@ -48,8 +48,8 @@ Contains the following subdirectories:
 ## Steps to follow
 First, we check everything related to the DNS.
 
-1. We check the DNSsec and forwarders in the `named.conf.options` file.
-[DIG_DIRECT_ZONE](./images/dnssec.png)
+1. We check the DNSsec and forwarders in the `named.conf.options` file. We also check the named.conf.local file to see the zones and their location.
+[DIG_DIRECT_ZONE](./images/dnssec.png) | [DIG_DIRECT_ZONE](./images/named.conf.local.png)
 
 2. Then we check the forward zone where we will add the alias and then the reverse zone.
 
@@ -69,3 +69,16 @@ cat /var/lib/bind/192.168.57.dns
 We will install it using the provision we have in the vagrant file (mercurio.vm.provision “shell”, name: “apache2”,
                           inline: “apt-get install -y apache2”)
 and configure it using the `apache2-provision.sh` file.
+
+4. Virtual Hosts
+We want to create and enable web servers for the domains apolo.olimpo.test and
+atenea.olimpo.test hosted on the machine mercurio.olimpo.test.
+To do this, we configure two files:
+
+- `apolo.olimpo.test.conf`
+[DIG_DIRECT_ZONE](./images/apolo.olimpo.test.png)
+
+- `atenea.olimpo.test.conf`
+[DIG_DIRECT_ZONE](./images/atenea.olimpo.test.png)
+
+---
