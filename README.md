@@ -110,6 +110,7 @@ Hurl is a tool for executing and testing HTTP requests.
 
 I have also used the hurl file to make checks.
 I had to create the soyuz.html file because the HURL file requires it. Although the PDF does not request it, the test does require checking it.
+Additionally, I had to adjust the 403 error message for atenea.olimpo.test to match the specific string requested by the HURL test.
 Below is a screenshot of the result:
 
 [HURL-RESULT](./images/hurl-check.png)
